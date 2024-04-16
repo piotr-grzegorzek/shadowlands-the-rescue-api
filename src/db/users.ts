@@ -30,3 +30,5 @@ export const createUser = async (newUser: NewUser) =>
 
 export const updateUserById = async (id: number, updatedUser: User) =>
   await db.update(users).set(updatedUser).where(eq(users.id, id)).returning({ id: users.id, username: users.username });
+
+export const getUserByName = async (username: string) => await db.select().from(users).where(eq(users.username, username));
