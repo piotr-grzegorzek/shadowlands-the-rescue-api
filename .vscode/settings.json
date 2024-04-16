@@ -11,5 +11,8 @@
   "vs-code-prettier-eslint.prettierLast": false,
   "[jsonc]": {
     "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+  },
+  "[sql]": {
+    "editor.defaultFormatter": "inferrinizzard.prettier-sql-vscode"
   } // set as "true" to run 'prettier' last not first
 }
