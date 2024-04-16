@@ -5,5 +5,4 @@ RUN npm i -g npx
 RUN rm /usr/local/bin/npx && npm install -g npm@latest
 WORKDIR /shooter_api
 COPY . .
-EXPOSE 3000
 RUN npm install
