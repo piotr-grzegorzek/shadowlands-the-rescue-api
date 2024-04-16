@@ -15,7 +15,7 @@ export type User = InferSelectModel<typeof users>;
 export type NewUser = InferInsertModel<typeof users>;
 
 const pool = new Pool({
-  connectionString: process.env["DB"],
+  connectionString: process.env["DB_URL"],
 });
 
 const db = drizzle(pool);
