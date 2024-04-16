@@ -1,0 +1,4 @@
+{
+    "workspaceKeybindings.dockerStart.enabled": true,
+    "workspaceKeybindings.npmRestart.enabled": true    
+}
