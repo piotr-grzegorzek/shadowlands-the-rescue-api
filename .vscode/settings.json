@@ -1,4 +1,15 @@
 {
-    "workspaceKeybindings.dockerStart.enabled": true,
-    "workspaceKeybindings.npmRestart.enabled": true    
+  "workspaceKeybindings.dockerStart.enabled": true,
+  "workspaceKeybindings.npmRestart.enabled": true,
+  // prettier-eslint configuration
+  "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
+  "editor.formatOnType": false, // required
+  "editor.formatOnPaste": true, // optional
+  "editor.formatOnSave": true, // optional
+  "editor.formatOnSaveMode": "file", // required to format on save
+  "files.autoSave": "onFocusChange", // optional but recommended
+  "vs-code-prettier-eslint.prettierLast": false,
+  "[jsonc]": {
+    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+  } // set as "true" to run 'prettier' last not first
 }
