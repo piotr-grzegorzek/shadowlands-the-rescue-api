@@ -1,7 +1,7 @@
 import express from "express";
 import { getUserByName, createUser, updateUserById } from "../db/users";
 import { authentication, random } from "../helpers";
-import { DOMAIN, SESSION_TOKEN } from "../constants";
+import { /*DOMAIN,*/ SESSION_TOKEN } from "../constants";
 
 export const register = async (req: express.Request, res: express.Response) => {
   try {
@@ -51,7 +51,7 @@ export const login = async (req: express.Request, res: express.Response) => {
     const updatedUser = await updateUserById(user.id, user);
 
     res.cookie(SESSION_TOKEN, user.session_token, {
-      domain: DOMAIN,
+      //domain: DOMAIN,
       path: "/",
       expires: new Date(Date.now() + 900000),
     });
