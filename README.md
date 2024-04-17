@@ -1,6 +1,6 @@
 # About this repo
 
-This repo is a small REST API for [shooter game](https://github.com/PwSGiVR-2024/shooter). It is built with express.js, typescript and drizzle. It utilizes docker image of postgres for easy setup and deployment.
+Small REST API for [shooter game](https://github.com/PwSGiVR-2024/shooter). It is built with express.js, typescript and drizzle. It utilizes docker image of postgres for easy setup and deployment.
 
 # Install docker (skip if already installed)
 
@@ -26,9 +26,9 @@ sudo apt update && sudo apt upgrade
 
 1. Clone this repo
 
-2. Open command prompt in the repo (in file explorer, hold shift and right click, then select open command window here)
+2. Open powershell in the repo (in file explorer, hold shift and right click, then select open powershell window here)
 
-3. In command prompt, enter the following
+3. In powershell, enter the following
 ```powershell
 ./dev.bat -y
 ```
@@ -59,7 +59,7 @@ Server is running. If you want to stop the server, open docker desktop, go to co
 
 # How to update the server
 
-Simply fetch the latest changes from the repo and run the server again. (it uses volume so the changes are automatically applied)
+Simply fetch the latest changes from the repo and run the server again. (it uses volume so changes are automatically applied)
 
 # WSL troubleshooting
 
