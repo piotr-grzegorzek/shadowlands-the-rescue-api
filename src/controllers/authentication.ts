@@ -1,5 +1,5 @@
 import express from "express";
-import { getUserByName, createUser, updateUserById } from "../db/users";
+import { getUserByName, createUser, updateUserById, getUserBySessionToken } from "../db/users";
 import { authentication, random } from "../helpers";
 import { /*DOMAIN,*/ SESSION_TOKEN } from "../constants";
 
@@ -57,6 +57,25 @@ export const login = async (req: express.Request, res: express.Response) => {
     });
 
     return res.status(200).json(updatedUser).end();
+  } catch (e) {
+    console.log(e);
+    return res.sendStatus(400);
+  }
+};
+
+export const isAuthenticated = async (req: express.Request, res: express.Response) => {
+  try {
+    const sessionToken = req.cookies[SESSION_TOKEN];
+    if (!sessionToken) {
+      return res.sendStatus(403);
+    }
+
+    const result = await getUserBySessionToken(sessionToken);
+    if (!result || result.length === 0) {
+      return res.sendStatus(403);
+    }
+
+    return res.status(200).end();
   } catch (e) {
     console.log(e);
     return res.sendStatus(400);
