@@ -30,5 +30,5 @@ else
 fi
 
 docker build -t local -f Dockerfile.dev .
-docker run --name local -p $port:$port -e POSTGRES_USER=$user -e POSTGRES_PASSWORD=$pass -e POSTGRES_DB=$db -e DB_URL=postgres://$user:$pass@localhost:5432/$db -e SECRET=$secret -e PORT=$port -e POSTGRES_HOST_AUTH_METHOD=trust -v $(pwd)/src:/shooter_api/src -d local
+docker run --name local -p $port:$port -e POSTGRES_USER=$user -e POSTGRES_PASSWORD=$pass -e POSTGRES_DB=$db -e DB_URL=postgres://$user:$pass@localhost:5432/$db -e SECRET=$secret -e PORT=$port -v $(pwd)/src:/shooter_api/src -d local
 docker exec -it local bash
