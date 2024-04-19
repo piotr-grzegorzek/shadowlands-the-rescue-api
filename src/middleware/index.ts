@@ -1,19 +1,11 @@
 import express from "express";
-import { SESSION_TOKEN } from "../constants";
-import { getUserBySessionToken } from "../db/users";
+import { checkSessionToken } from "../helpers/authentication";
 
 export const isAuthenticatedMiddleware = async (req: express.Request, res: express.Response, next: express.NextFunction) => {
   try {
-    const sessionToken = req.cookies[SESSION_TOKEN];
-    if (!sessionToken) {
+    if (!(await checkSessionToken(req))) {
       return res.sendStatus(403);
     }
-
-    const result = await getUserBySessionToken(sessionToken);
-    if (!result || result.length === 0) {
-      return res.sendStatus(403);
-    }
-
     return next();
   } catch (e) {
     console.log(e);

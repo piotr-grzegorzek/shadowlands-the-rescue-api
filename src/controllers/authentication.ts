@@ -1,7 +1,8 @@
 import express from "express";
-import { getUserByName, createUser, updateUserById, getUserBySessionToken } from "../db/users";
+import { getUserByName, createUser, updateUserById } from "../db/users";
 import { authentication, random } from "../helpers";
 import { /*DOMAIN,*/ SESSION_TOKEN } from "../constants";
+import { checkSessionToken } from "../helpers/authentication";
 
 export const register = async (req: express.Request, res: express.Response) => {
   try {
@@ -65,16 +66,9 @@ export const login = async (req: express.Request, res: express.Response) => {
 
 export const isAuthenticated = async (req: express.Request, res: express.Response) => {
   try {
-    const sessionToken = req.cookies[SESSION_TOKEN];
-    if (!sessionToken) {
+    if (!(await checkSessionToken(req))) {
       return res.sendStatus(403);
     }
-
-    const result = await getUserBySessionToken(sessionToken);
-    if (!result || result.length === 0) {
-      return res.sendStatus(403);
-    }
-
     return res.status(200).end();
   } catch (e) {
     console.log(e);
