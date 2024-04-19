@@ -75,3 +75,25 @@ export const isAuthenticated = async (req: express.Request, res: express.Respons
     return res.sendStatus(400);
   }
 };
+
+export const logout = async (req: express.Request, res: express.Response) => {
+  const username = req.params["username"];
+  if (!username) {
+    return res.sendStatus(400);
+  }
+
+  const result = await getUserByName(username);
+  if (!result) {
+    return res.sendStatus(400);
+  }
+
+  const user = result[0];
+  if (!user) {
+    return res.sendStatus(400);
+  }
+
+  user.session_token = authentication(random(), user.pass);
+  await updateUserById(user.id, user);
+
+  return res.sendStatus(200);
+};

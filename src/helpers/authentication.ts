@@ -14,5 +14,9 @@ export const checkSessionToken = async (req: express.Request) => {
     return false;
   }
 
+  if (result[0]) {
+    req.params["username"] = result[0].username;
+  }
+
   return true;
 };
