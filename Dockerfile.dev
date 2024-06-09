@@ -1,5 +1,8 @@
 FROM postgres:16.2-bookworm
 
+# Use a different Debian mirror
+RUN echo 'deb http://ftp.us.debian.org/debian/ bookworm main' > /etc/apt/sources.list
+
 RUN apt update && apt install -y nodejs npm
 RUN npm i -g npx
 # Solution for npx error: npm ERR! cb.apply is not a function
