@@ -14,7 +14,7 @@ export const register = async (req: express.Request, res: express.Response) => {
     }
 
     const result = await getUserByName(username);
-    if (!result || result.length > 0) {
+    if (result && result.length > 0) {
       return res.status(400).json({
         message: "Username already exists.",
       });
