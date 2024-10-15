@@ -1,6 +1,6 @@
 # About this repo
 
-Small REST API for [shooter game](https://github.com/PwSGiVR-2024/shooter). It is built with express.js, typescript and drizzle. It utilizes docker image of postgres for easy setup and deployment.
+Small REST API for [shooter game](https://github.com/piotr-grzegorzek/shadowlands-the-rescue). It is built with express.js, typescript and drizzle. It utilizes docker image of postgres for easy setup and deployment.
 
 # Install docker (skip if already installed)
 
